@@ -117,16 +117,16 @@ export default({ config, db }) => {
     })
   })
 
-  // Get reviews for a specific truck id
-  // "/v1/foodtruck/reviews/:id"
+  // Get restaurants that serve certain foodtype
+  //‘/v1/foodtruck/foodtype/:foodtype/'
   api.get('reviews/:id', (req, res) => {
-    Review.find({
-      foodtruck: req.params.id
-    }, (err, reviews) => {
+    FoodTruck.find({
+      foodtype: req.params.foodtype
+    }, (err, foodtrucks) => {
       if(err){
         res.send(err)
       }
-      res.json(reviews)
+      res.json(foodtrucks)
     })
   })
 
