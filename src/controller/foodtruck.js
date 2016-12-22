@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
 import { Router } from 'express'
 import FoodTruck from '../model/foodtruck'
+import Review from '../model/review'
 
 export default({ config, db }) => {
   let api = Router()
@@ -56,7 +57,7 @@ export default({ config, db }) => {
         foodtruck.foodtype = req.body.foodtype
         foodtruck.avgcost = req.body.avgcost
         foodtruck.geometry.coordinates = req.body.geometry.coordinates
-        
+
         foodtruck.save(err => {
           if(err){
             res.send(err)
