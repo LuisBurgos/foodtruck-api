@@ -12,7 +12,12 @@ This is a simple project of an API implementation.
 
 ```json
 {
-  "name" : "Some foodtruck name"
+  "name" : "Some foodtruck name",
+  "foodtype" : "Meat",
+  "avgcost" : 5.99,
+  "geometry" : {
+    "coordinates": [35.09, -89.324]
+  },
 }
 ```
 

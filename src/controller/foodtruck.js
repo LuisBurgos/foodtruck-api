@@ -9,6 +9,9 @@ export default({ config, db }) => {
   api.post('/add', (req, res) => {
     let newFoodTruck = new FoodTruck()
     newFoodTruck.name = req.body.name
+    newFoodTruck.foodtype = req.body.foodtype
+    newFoodTruck.avgcost = req.body.avgcost
+    newFoodTruck.geometry.coordinates = req.body.geometry.coordinates
 
     newFoodTruck.save(err => {
       if(err){
@@ -50,6 +53,10 @@ export default({ config, db }) => {
         res.send(err)
       } else {
         foodtruck.name = req.body.name
+        foodtruck.foodtype = req.body.foodtype
+        foodtruck.avgcost = req.body.avgcost
+        foodtruck.geometry.coordinates = req.body.geometry.coordinates
+        
         foodtruck.save(err => {
           if(err){
             res.send(err)
