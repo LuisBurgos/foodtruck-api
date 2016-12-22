@@ -4,14 +4,8 @@ import passportLocalMongoose from 'passport-local-mongoose'
 let Schema = mongoose.Schema
 
 let AccountSchema = new Schema({
-  email: {
-    type: String,
-    required: true
-  },
-  password: {
-    type: String,
-    required: true
-  }
+  email: String,
+  password: String
 })
 
 AccountSchema.plugin(passportLocalMongoose)
