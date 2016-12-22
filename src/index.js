@@ -7,6 +7,7 @@ import passport from 'passport'
 import config from './config'
 import routes from './routes'
 
+require('dotenv').config()
 const LocalStrategy = require('passport-local').Strategy
 
 let app = express()
