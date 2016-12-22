@@ -6,7 +6,7 @@ import passport from 'passport'
 import Account from '../model/account'
 import config from '../config'
 
-import { generateAccessToken, respond, authenticate } from '../middleware/authmiddleware'
+import { generateAccessToken, respond, authenticate } from '../middleware/authMiddleware'
 
 export default({ config, db }) => {
   let api = Router()

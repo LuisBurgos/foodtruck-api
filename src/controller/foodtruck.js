@@ -3,11 +3,13 @@ import { Router } from 'express'
 import FoodTruck from '../model/foodtruck'
 import Review from '../model/review'
 
+import { authenticate } from '../middleware/authMiddleware'
+
 export default({ config, db }) => {
   let api = Router()
 
   // "/v1/foodtruck/add"
-  api.post('/add', (req, res) => {
+  api.post('/add', authenticate, (req, res) => {
     let newFoodTruck = new FoodTruck()
     newFoodTruck.name = req.body.name
     newFoodTruck.foodtype = req.body.foodtype
@@ -48,7 +50,7 @@ export default({ config, db }) => {
   })
 
   // "/v1/foodtruck/id"
-  api.put('/:id', (req, res) => {
+  api.put('/:id', authenticate, (req, res) => {
     FoodTruck.findById(req.params.id, (err, foodtruck) => {
       if(err){
         res.send(err)
@@ -72,7 +74,7 @@ export default({ config, db }) => {
   })
 
   // "/v1/foodtruck/id"
-  api.delete('/:id', (req, res) => {
+  api.delete('/:id', authenticate, (req, res) => {
     FoodTruck.remove({
       _id: req.params.id
     }, (err, foodtruck) => {
@@ -88,7 +90,7 @@ export default({ config, db }) => {
 
   // Add Review for a specific truck id
   // "/v1/foodtruck/reviews/add/:id"
-  api.post('reviews/add/:id', (req, res) => {
+  api.post('reviews/add/:id', authenticate, (req, res) => {
     FoodTruck.findById(req.params.id, (err, foodtruck) => {
       if(err){
         res.send(err)
